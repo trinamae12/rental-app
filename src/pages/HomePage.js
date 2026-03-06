@@ -16,6 +16,17 @@ export default function HomePage () {
                 );
 
                 setUser(response.data.user);
+            } catch (e) {
+                setUser(null);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        checkAuth();
+    },[user]);
+
+                setUser(response.data.user);
                 console.log("User here", user);
             } catch (e) {
                 setUser(null);
