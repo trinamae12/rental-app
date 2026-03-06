@@ -9,7 +9,7 @@ export default function HomePage () {
 
     useEffect(() => {
         checkAuth();
-    },[]);
+    },[checkAuth]);
 
     const checkAuth = async () => {
         try {
