@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function LoginForm () {
+export default function LoginForm ({ setUser }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
@@ -20,11 +20,11 @@ export default function LoginForm () {
                 },
                 { withCredentials: true }
             );
-
+            setUser(response.data.user);
             console.log(response.data);
         } catch (err) {
-            console.error(err);
-            setError("Invalid Credentials");
+            setError(err);
+            console.log("error", error);
         }   
     }
 
