@@ -26,18 +26,6 @@ export default function HomePage () {
         checkAuth();
     },[user]);
 
-                setUser(response.data.user);
-                console.log("User here", user);
-            } catch (e) {
-                setUser(null);
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        checkAuth();
-    },[]);
-
     if (loading) {
         return <div>Loading...</div>;
     }
