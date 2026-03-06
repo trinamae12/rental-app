@@ -26,21 +26,17 @@ export default function HomePage () {
         checkAuth();
     },[user]);
 
-    const checkAuth = async () => {
-        try {
-            const response = await axios.get(
-                "http://127.0.0.1:8000/api/me",
-                { withCredentials: true }
-            );
-
-            setUser(response.data.user);
-            console.log("User here", user);
-        } catch (e) {
-            setUser(null);
-        } finally {
-            setLoading(false);
+                setUser(response.data.user);
+                console.log("User here", user);
+            } catch (e) {
+                setUser(null);
+            } finally {
+                setLoading(false);
+            }
         }
-    }
+
+        checkAuth();
+    },[]);
 
     if (loading) {
         return <div>Loading...</div>;
