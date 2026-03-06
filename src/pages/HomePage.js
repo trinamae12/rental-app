@@ -8,6 +8,21 @@ export default function HomePage () {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const response = await axios.get(
+                    "http://127.0.0.1:8000/api/me",
+                    { withCredentials: true }
+                );
+
+                setUser(response.data.user);
+            } catch (e) {
+                setUser(null);
+            } finally {
+                setLoading(false);
+            }
+        }
+
         checkAuth();
     },[user]);
 
