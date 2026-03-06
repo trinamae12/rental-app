@@ -52,7 +52,7 @@ export default function LoginForm ({ setUser }) {
                         <div className="flex items-center justify-between">
                             <label for="password" className="block text-sm/6 font-medium text-gray-900">Password</label>
                             <div className="text-sm">
-                                <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">Forgot Password?</a>
+                                <a className="font-semibold text-indigo-600 hover:text-indigo-500">Forgot Password?</a>
                             </div>
                         </div>
                         <div className="mt-2">
