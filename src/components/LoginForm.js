@@ -10,18 +10,25 @@ export default function LoginForm ({ setUser }) {
         e.preventDefault();
 
         try {
-            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie", { withCredentials: true });
-
             const response = await axios.post(
-                "http://127.0.0.1:8000/api/login",
+                "/api/login",
                 {
-                    email: email,
-                    password: password
-                },
-                { withCredentials: true }
+                    email,
+                    password
+                }
             );
-            setUser(response.data.user);
-            console.log(response.data);
+
+            const token =  response.data.token;
+
+            localStorage.setItem("token", token);
+
+            const userRes = await axios.get("/api/me", {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+
+            setUser(userRes.data.user);
         } catch (err) {
             setError(err);
             console.log("error", error);
